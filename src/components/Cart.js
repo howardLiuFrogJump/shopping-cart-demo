@@ -27,7 +27,7 @@ export default function Cart(){
                   <select name="" id="" className="form-select"></select>
                 </td>
                 <td className="text-end">
-                  NT$ {item.price * item.quality}
+                  NT$ {item.price * item.quantity}
                 </td>
               </tr>
             )

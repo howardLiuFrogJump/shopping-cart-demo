@@ -8,7 +8,6 @@ function App() {
   
   const cartReducer = useReducer((state , action)=>{
     const cartList = [...state.cartList];
-    console.log('11 action' , action);
     switch(action.type){
       case "ADD_TO_CART":
         cartList.push(action.payload);
