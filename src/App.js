@@ -23,6 +23,13 @@ function App() {
           ...state,
           cartList,
         }
+      case "CHANGE_CART_QUANTITY":
+        cartList[index].quantity = action.payload.quantity
+        return{
+          ...state,
+          cartList,
+
+        }
       default:
         return false
       
