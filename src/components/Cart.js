@@ -11,7 +11,15 @@ export default function Cart(){
             return(
               <tr key={item.id}>
                 <td>
-                  <a href="#">X</a>
+                  <button type="button" className="btn btn-sm"
+                  onClick={()=>{
+                    dispatch({
+                      type: "REMOVE_CART_ITEM",
+                      payload:{
+                        ...item
+                      }
+                    })
+                  }}> X</button>
                 </td>
                 <td>
                   <img src={item.img}
