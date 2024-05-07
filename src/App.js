@@ -3,58 +3,13 @@ import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 
-import { CartContext } from "./store";
+import { CartContext ,cartReducer , cartInit } from "./store";
 function App() {
   
-  const cartReducer = useReducer((state , action)=>{
-    const cartList = [...state.cartList];
-    const index = cartList.findIndex((item) => item.id === action.payload.id);
-    console.log(index);
-    switch(action.type){
-      case "ADD_TO_CART":
-        if(index === -1) {
-          cartList.push(action.payload);
-        }else{
-
-          cartList[index].quantity += action.payload.quantity
-        }
-       
-      
-
-
-
-        return {
-          ...state,
-          cartList,
-          total: calculateTotalPrice(cartList)
-        }
-      case "CHANGE_CART_QUANTITY":
-        cartList[index].quantity = action.payload.quantity
-
-        return{
-          ...state,
-          cartList,
-          total: calculateTotalPrice(cartList)
-
-        }
-      case "REMOVE_CART_ITEM":
-        cartList.splice(index , 1);
-        return{
-          ...state,
-          cartList,
-          total: calculateTotalPrice(cartList)
-
-        }
-      default:
-        return false
-      
-    }
-  }, { 
-    cartList: [],
-  })
+  const reReducer = useReducer( cartReducer, cartInit)
 
   return (
-    <CartContext.Provider  value={cartReducer}>
+    <CartContext.Provider  value={reReducer}>
 
       <Navbar/> 
 
