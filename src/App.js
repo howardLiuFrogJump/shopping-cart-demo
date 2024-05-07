@@ -1,19 +1,29 @@
+import { useReducer } from "react";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
+
+import { CartContext } from "./store";
 function App() {
+  
+  const cartReducer = useReducer((state , action)=>{
+    console.log('10 state' , state);
+
+    console.log('11 action' , action);
+    switch(action){
+      // case: 
+      default:
+        return false
+      
+    }
+  }, { 
+    cartList: [],
+  })
+
   return (
-    <div className="App">
+    <CartContext.Provider  value={cartReducer}>
+
       <Navbar/> 
-      {/* <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="navbar-brand">甜點蛋糕店</a>
-          <button className="btn btn-outline-dark position-relative" type="submit">購物車
-          <span className="badge rounded-pill text-bg-danger
-            position-absolute top-0 start-100 translate-middle">99</span>
-          </button>
-        </div>
-      </nav> */}
 
       <div className="container mt-4">
         {/* 外層隔線 */}
@@ -33,7 +43,7 @@ function App() {
         {/* 分隔線 */}
       </div>
 
-    </div>
+    </CartContext.Provider>
   );
 }
 
