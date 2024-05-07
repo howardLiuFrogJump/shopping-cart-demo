@@ -7,11 +7,15 @@ import { CartContext } from "./store";
 function App() {
   
   const cartReducer = useReducer((state , action)=>{
-    console.log('10 state' , state);
-
+    const cartList = [...state.cartList];
     console.log('11 action' , action);
-    switch(action){
-      // case: 
+    switch(action.type){
+      case "ADD_TO_CART":
+        cartList.push(action.payload);
+        return {
+          ...state,
+          cartList,
+        }
       default:
         return false
       
